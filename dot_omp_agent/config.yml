@@ -1,0 +1,26 @@
+modelRoles:
+  default: strata/qwen3.8
+  smol: llamacpp/qwen-worker
+  tiny: llamacpp/qwen-worker
+  commit: llamacpp/qwen-worker
+  task: llamacpp/qwen-worker
+  slow: llamacpp/qwen-worker
+  advisor: llamacpp/qwen-worker
+  plan: llamacpp/qwen-worker
+cycleOrder:
+  - smol
+  - default
+defaultThinkingLevel: high
+modelRoleStorage: global
+compaction:
+  enabled: true
+  modelThresholds:
+    strata/qwen3.8: "90%"
+    llamacpp/qwen-worker: "85%"
+setupVersion: 3
+memory:
+  backend: local
+autolearn:
+  enabled: true
+images:
+  blockImages: true

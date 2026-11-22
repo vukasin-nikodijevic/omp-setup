@@ -1,0 +1,25 @@
+providers:
+  strata:
+    baseUrl: http://10.0.0.3:8082/v1
+    api: openai-completions
+    apiKey: not-needed
+    models:
+      - id: qwen3.8
+        name: Qwen 3.8 (Strata)
+        reasoning: true
+        input: [text]
+        contextWindow: 262144
+        maxTokens: 16384
+
+  llamacpp:
+    baseUrl: http://10.0.0.3:8080/v1
+    api: openai-completions
+    apiKey: not-needed
+    models:
+      - id: qwen-worker
+        name: Qwen 3.5 35B-A3B (Q6_K)
+        reasoning: true
+        input: [text]
+        contextWindow: 65536
+        maxTokens: 8192
+
