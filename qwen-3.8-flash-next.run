@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#export MODEL="Qwen3.8-Flash-Next-GSQ-RCO-IQ1_M-00001-of-00002.gguf"
+#export MODEL2="Qwen3.8-Flash-Next-GSQ-RCO-IQ1_M-00002-of-00002.gguf"
+#
+#cd /home/vukasin/UnbiasedStrata
+#
+#./build/bin/unbiased-strata \
+#	--engine build/bin/strata \
+#	-m /home/vukasin/huggingface/$MODEL \
+#	--host 127.0.0.1 \
+#	--port 18090 \
+#	--alias qwen3.8-flash-next-strata \
+#	--sse-ping-interval 10 \
+#	-- --pack /home/vukasin/packs/iq1m \
+#	   --native /home/vukasin/huggingface/$MODEL \
+#	   --ple-gguf /home/vukasin/huggingface/$MODEL2 \
+#	   --expert-profile /home/vukasin/packs/packs/expert-profile-coder-shard-bba88856.bin \
+#	   --spec 4 \
+#	   --spec-min-p 0.5 \
+#	   --prefill auto \
+#	   --max-context 65536
+
+
+MODELS="$HOME/huggingface"
+PACKS="$HOME/packs"
+
+cd $HOME/UnbiasedStrata
+
+./build/bin/unbiased-strata --engine build/bin/strata \
+  -m $MODELS/Qwen3.8-Flash-Next-GSQ-RCO-IQ1_M-00001-of-00002.gguf \
+  --host 0.0.0.0 --port 8082 --alias qwen3.8-flash-next --sse-ping-interval 10 \
+  -- --pack $PACKS/iq1m \
+     --native $MODELS/Qwen3.8-Flash-Next-GSQ-RCO-IQ1_M-00001-of-00002.gguf \
+     --ple-gguf $MODELS/Qwen3.8-Flash-Next-GSQ-RCO-IQ1_M-00002-of-00002.gguf \
+     --expert-profile $PACKS/packs/expert-profile-coder-shard-bba88856.bin \
+     --mtp $PACKS/mtp \
+     --spec 4 --spec-min-p 0.5 \
+     --prefill auto \
+     --max-context 262144
+
