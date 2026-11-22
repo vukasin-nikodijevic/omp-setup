@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$HOME/llama-stack"
 MODEL_DIR="$ROOT/models"
 MOUNT="/models"                       # container-side root of the bind mount
 
@@ -35,7 +35,7 @@ ARGS=(
     --temperature 0.3
     --top-p 0.9
     --ctx-size 65536
-    --parallel 1          # direct mode reserved 4 slots; 65536 x 4 = ~27 GB, x1 = ~6.8 GB
+    --parallel 2          # direct mode reserved 4 slots; 65536 x 4 = ~27 GB, x1 = ~6.8 GB
     --cache-reuse 512
 )
 
